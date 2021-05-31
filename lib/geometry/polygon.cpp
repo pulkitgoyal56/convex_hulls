@@ -31,11 +31,12 @@ namespace geometry
                   {
                       return angle(apex_a, this->center_) < angle(apex_b, this->center_);
                   });
+        this->apexes_.push_back(this->apexes_.front());
 
         // AREA = Σ(y[n] * (x[n+1] - x[n-1]))/2
         // https://www.mathopenref.com/coordpolygonarea.html
-        this->area_ = this->apexes_.front().y * (this->apexes_.at(1).x - this->apexes_.back().x) + this->apexes_.back().y * (this->apexes_.front().x - this->apexes_.at(this->apexes_.size() - 2).x);
-        for (int i = 1; i < this->apexes_.size() - 1; ++i)
+        this->area_ = this->apexes_.front().y * (this->apexes_.at(1).x - this->apexes_.back().x);
+        for (int i = 1; i < this->order_; ++i)
             this->area_ += this->apexes_.at(i).y * (this->apexes_.at(i + 1).x - this->apexes_.at(i - 1).x);
         this->area_ = abs(area_ / 2);
 
@@ -77,14 +78,11 @@ namespace geometry
 
         // Ray tracing algorithm to determine if a point lies inside a polygon.
         Ray ray(point, this->center_);
-        int crosses = are_intersecting(LineSegment(this->apexes_.back(), this->apexes_.front()), ray);
-        if (crosses && (intersection(LineSegment(this->apexes_.back(), this->apexes_.front()), ray) == this->apexes_.back()))
-            --crosses;
-        for (int i = 1; i < this->order_; ++i)
-            if (are_intersecting(LineSegment(this->apexes_.at(i - 1), this->apexes_.at(i)), ray))
-                if (!(intersection(LineSegment(this->apexes_.at(i - 1), this->apexes_.at(i)), ray) == this->apexes_.at(i - 1)))
-                    ++crosses;
-        return crosses % 2;
+        bool crosses = false;
+        for (int i = 0; i < this->order_; ++i)
+            if (are_intersecting(LineSegment(this->apexes_.at(i), this->apexes_.at(i + 1)), ray))
+                crosses = !crosses;
+        return crosses;
     }
     double operator&(const Polygon &polygon_a, const Polygon &polygon_b)
     {
@@ -114,10 +112,10 @@ namespace geometry
                 contained_points.push_back(polygon_b.apexes_.at(k));
         }
 
-        for (int i = 0; i < polygon_a.order_ - 1; ++i)
+        for (int i = 0; i < polygon_a.order_; ++i)
         {
             LineSegment edge_a(polygon_a.apexes_.at(i), polygon_a.apexes_.at(i + 1));
-            for (int j = 0; j < polygon_b.order_ - 1; ++j)
+            for (int j = 0; j < polygon_b.order_; ++j)
             {
                 LineSegment edge_b(polygon_b.apexes_.at(j), polygon_b.apexes_.at(j + 1));
                 if (are_intersecting(edge_a, edge_b))
@@ -129,6 +127,7 @@ namespace geometry
             }
         }
 
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
         if (contained_points.size())
             return Polygon(contained_points).area_;
         else
