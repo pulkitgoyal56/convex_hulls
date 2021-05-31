@@ -16,22 +16,6 @@ using json = nlohmann::json; //for convenience
 
 int main(int argc, char **argv)
 {
-    // Point origin(0, 0);
-
-    // Point p11(1, 1);
-    // Point p13(1, 3);
-    // Point p33(3, 3);
-    // Point p31(3, 1);
-
-    // Polygon polygon_22(vector<Point>{p11, p13, p33, p31});
-
-    // Point p22(2, 2);
-    // Point p24(2, 4);
-    // Point p44(4, 4);
-    // Point p42(4, 2);
-
-    // Polygon polygon_33(vector<Point>{p22, p24, p44, p42});
-
     try
     {
         if (argc != 2)
@@ -77,12 +61,10 @@ int main(int argc, char **argv)
 
         for (int k = 0; k < n; ++k)
             if (!removed_hulls.at(k))
-                cout << k << endl;
+                cout << k << " ";
 
         cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
-
-        for (int k = 0; k < n; ++k)
-            cout << convex_hulls[k].id_ << " - " << convex_hulls[k].area_ << endl;
+        cout << "[INFO] DONE." << endl;
     }
     catch (const char *msg)
     {
@@ -90,6 +72,4 @@ int main(int argc, char **argv)
         cout << "[ERROR] " << msg << endl;
         return 1;
     }
-    cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
-    cout << "[INFO] DONE." << endl;
 }
