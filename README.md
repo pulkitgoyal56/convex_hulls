@@ -12,12 +12,10 @@
 * `src/` - Application code
 * `tool/` - Complementary tools
 * [`CMakeLists.txt`](CMakeLists.txt)
-* [`convex_hulls.json`](/src/convex_hulls.json) - Input file
-* `README.md`
 
 ## Compiling and Running
 
 ``` sh
-cd $PROJECT_ROOT/build && make
-cd $PROJECT_ROOT/bin && ./Convex_Hulls
+mkdir -p $PROJECT_ROOT/build && cd $PROJECT_ROOT/build && cmake ..
+make && ../bin/Convex_Hulls $PROJECT_ROOT/docs/convex_hulls.json
 ```
