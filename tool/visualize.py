@@ -25,9 +25,10 @@ def draw_polygon(ax, n, axpexes):
 # %%
 fig, ax = plt.subplots()
 
-with open("../convex_hulls.json") as file:
+with open("./docs/convex_hulls.json") as file:
     for polygon in json.load(file)["convex hulls"]:
         draw_polygon(ax, polygon["ID"], polygon["apexes"])
+    ax.set_title("PROBLEM")
 
 ax.legend()
 plt.show()
@@ -35,9 +36,21 @@ plt.show()
 # %%
 fig, ax = plt.subplots()
 
-with open("convex_hulls_expected_result.json") as file:
+with open("./tool/expected_result_convex_hulls.json") as file:
     for polygon in json.load(file)["convex hulls"]:
         draw_polygon(ax, polygon["ID"], polygon["apexes"])
+    ax.set_title("EXPECTED SOLUTION")
+
+ax.legend()
+plt.show()
+
+# %%
+fig, ax = plt.subplots()
+
+with open("result_convex_hulls.json") as file:
+    for polygon in json.load(file)["convex hulls"]:
+        draw_polygon(ax, polygon["ID"], polygon["apexes"])
+    ax.set_title("SOLUTION")
 
 ax.legend()
 plt.show()
