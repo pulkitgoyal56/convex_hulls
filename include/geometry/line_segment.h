@@ -12,7 +12,7 @@ namespace geometry
     {
     public:
         LineSegment(){};
-        LineSegment(const Point &start, const Point &end);
+        LineSegment(const Point &t_start, const Point &t_end);
 
         bool f2(const Point &point) const; // Checks if point lies on the line segment.
     };

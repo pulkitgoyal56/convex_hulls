@@ -19,7 +19,7 @@ namespace geometry
         Point center_;
 
         Polygon(){};
-        Polygon(const std::vector<Point> &apexes, int _id = -1);
+        Polygon(const std::vector<Point> &t_apexes, int t_id = -1);
 
         bool is_in_bounds(const Point &point) const;
         bool f2(const Point &point) const; // Checks if point lies inside the polygon.

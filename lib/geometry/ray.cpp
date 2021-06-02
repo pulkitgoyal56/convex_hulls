@@ -5,7 +5,7 @@
 
 namespace geometry
 {
-    Ray::Ray(const Point &start, const Point &end) : start_(start), end_(end)
+    Ray::Ray(const Point &t_start, const Point &t_end) : start_(t_start), end_(t_end)
     {
         this->a_ = (this->end_.y - this->start_.y);
         this->b_ = (this->start_.x - this->end_.x);

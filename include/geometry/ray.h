@@ -14,7 +14,7 @@ namespace geometry
     {
     public:
         Ray(){};
-        Ray(const Point &start, const Point &end);
+        Ray(const Point &t_start, const Point &t_end);
 
         virtual bool f2(const Point &point) const; // Checks if point lies on the ray.
 

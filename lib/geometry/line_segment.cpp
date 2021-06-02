@@ -5,7 +5,7 @@
 
 namespace geometry
 {
-    LineSegment::LineSegment(const Point &start, const Point &end) : Ray(start, end) {}
+    LineSegment::LineSegment(const Point &t_start, const Point &t_end) : Ray(t_start, t_end) {}
     bool LineSegment::f2(const Point &point) const // {0: "not_on/start/end" , 1: "on"}
     {
         // if (this->f(point)) // If the point doesn't lie on the line,
