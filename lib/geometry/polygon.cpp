@@ -9,7 +9,7 @@
 
 namespace geometry
 {
-    Polygon::Polygon(const std::vector<Point> &t_apexes, int t_id = -1) : apexes_(t_apexes), id_(t_id)
+    Polygon::Polygon(const std::vector<Point> &t_apexes, int t_id) : apexes_(t_apexes), id_(t_id)
     {
         this->order_ = this->apexes_.size();
 
