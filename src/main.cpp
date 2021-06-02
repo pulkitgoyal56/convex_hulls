@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include <fstream>
+#include <set>
 
 #include "nlohmann/json.hpp"
 #include "geometry/polygon.h"
@@ -42,16 +43,27 @@ int main(int argc, char **argv)
 
         int n = convex_hulls.size();
 
-        vector<bool> removed_hulls(n);
-        for (int i = 0; i < n - 1; ++i)
-        {
-            for (int j = i + 1; j < n; ++j)
+        set<int, greater<int>> removed_hulls;
+        for (int i = n; i > 0; --i)
+            for (int j = i - 1; j > 0; --j)
             {
                 double common_area = convex_hulls[i] & convex_hulls[j];
-                removed_hulls.at(convex_hulls[i].id_) = removed_hulls.at(convex_hulls[i].id_) | (convex_hulls[i].area_ < (2 * common_area));
-                removed_hulls.at(convex_hulls[j].id_) = removed_hulls.at(convex_hulls[j].id_) | (convex_hulls[j].area_ < (2 * common_area));
+                if (convex_hulls[i].area_ < (2 * common_area))
+                    removed_hulls.insert(i);
+                if (convex_hulls[j].area_ < (2 * common_area))
+                    removed_hulls.insert(j);
             }
-        }
+
+        json output = input;
+        for (const int id : removed_hulls)
+            output["convex hulls"].erase(id);
+
+        string destination = string(argv[1]).insert(string(argv[1]).rfind("/") + 1, "result_");
+        cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
+        cout << "[INFO] OUTPUT FILE - " << destination << endl;
+
+        ofstream output_file(destination);
+        output_file << setw(3) << output;
 
         cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
         cout << "[INFO] DONE." << endl;
