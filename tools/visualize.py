@@ -36,7 +36,7 @@ plt.show()
 # %%
 fig, ax = plt.subplots()
 
-with open("./tool/expected_result_convex_hulls.json") as file:
+with open("./tools/expected_result_convex_hulls.json") as file:
     for polygon in json.load(file)["convex hulls"]:
         draw_polygon(ax, polygon["ID"], polygon["apexes"])
     ax.set_title("EXPECTED SOLUTION")

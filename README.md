@@ -10,7 +10,7 @@
 * `include/` - Header files
 * `lib/` - Implementations
 * `src/` - Application code
-* `tool/` - Complementary tools
+* `tools/` - Complementary tools
 * [`CMakeLists.txt`](CMakeLists.txt)
 
 ## Compiling and Running
