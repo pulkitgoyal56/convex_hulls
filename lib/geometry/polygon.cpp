@@ -4,13 +4,12 @@
 #include "geometry/polygon.h"
 
 #include <numeric>
-#include <iostream>
 
 #include "geometry/line_segment.h"
 
 namespace geometry
 {
-    Polygon::Polygon(const std::vector<Point> &apexes, int id) : apexes_(apexes), id_(id)
+    Polygon::Polygon(const std::vector<Point> &t_apexes, int t_id = -1) : apexes_(t_apexes), id_(t_id)
     {
         this->order_ = this->apexes_.size();
 
@@ -52,17 +51,6 @@ namespace geometry
         this->y_upper_bound_ = std::max_element(this->apexes_.begin(), this->apexes_.end(), [](Point const &p1, Point const &p2)
                                                 { return (p1.y ? p1.y < p2.y : p2.y); })
                                    ->y;
-
-        std::cout << "<> NEW POLYGON"
-                  << " | ID - " << this->id_
-                  << " | ORDER - " << this->order_
-                  << " | CENTER - " << this->center_
-                  << " | AREA - " << this->area_
-                  << " | X_BOUND - "
-                  << "[" << this->x_lower_bound_ << ", " << this->x_upper_bound_ << "]"
-                  << " | Y_BOUND - "
-                  << "[" << this->y_lower_bound_ << ", " << this->y_upper_bound_ << "]"
-                  << std::endl;
     }
     bool Polygon::is_in_bounds(const Point &point) const
     {
@@ -88,29 +76,15 @@ namespace geometry
     {
         std::vector<Point> contained_points;
 
-        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
-        std::cout << "[] INTERSECTING [" << polygon_a.id_ << " & " << polygon_b.id_ << "]" << std::endl;
-
         // Add apexes of polygon_a inside polygon_b
         for (int k = 0; k < polygon_a.order_; ++k)
-        {
-            std::cout << "<> TRYING " << k + 1 << "/" << polygon_a.order_ << std::endl;
-            std::cout << " > " << polygon_a.apexes_.at(k) << " | " << polygon_b.f2(polygon_a.apexes_.at(k)) << std::endl;
             if (bool inside = polygon_b.f2(polygon_a.apexes_.at(k)))
                 contained_points.push_back(polygon_a.apexes_.at(k));
-        }
-
-        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
-        std::cout << "[] INTERSECTING [" << polygon_b.id_ << " & " << polygon_a.id_ << "]" << std::endl;
 
         // Add apexes of polygon_b inside polygon_a
         for (int k = 0; k < polygon_b.order_; ++k)
-        {
-            std::cout << "<> TRYING " << k + 1 << "/" << polygon_b.order_ << std::endl;
-            std::cout << " > " << polygon_b.apexes_.at(k) << " | " << polygon_a.f2(polygon_b.apexes_.at(k)) << std::endl;
             if (bool inside = polygon_a.f2(polygon_b.apexes_.at(k)))
                 contained_points.push_back(polygon_b.apexes_.at(k));
-        }
 
         for (int i = 0; i < polygon_a.order_; ++i)
         {
@@ -127,7 +101,6 @@ namespace geometry
             }
         }
 
-        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
         if (contained_points.size())
             return Polygon(contained_points).area_;
         else

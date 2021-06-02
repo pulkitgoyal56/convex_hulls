@@ -25,9 +25,7 @@ int main(int argc, char **argv)
             throw "INPUT FILE COULDN'T BE OPENED";
 
         cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
-        cout << fixed << setprecision(2);
         cout << "[INFO] INPUT FILE - " << argv[1] << endl;
-        cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
 
         json input;
         input_file >> input;
@@ -42,8 +40,6 @@ int main(int argc, char **argv)
             convex_hulls.push_back(Polygon(apexes, convex_hull["ID"]));
         }
 
-        cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
-
         int n = convex_hulls.size();
 
         vector<bool> removed_hulls(n);
@@ -56,12 +52,6 @@ int main(int argc, char **argv)
                 removed_hulls.at(convex_hulls[j].id_) = removed_hulls.at(convex_hulls[j].id_) | (convex_hulls[j].area_ < (2 * common_area));
             }
         }
-
-        cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
-
-        for (int k = 0; k < n; ++k)
-            if (!removed_hulls.at(k))
-                cout << k << " ";
 
         cout << "------------------------------------------------------------------------------------------------------------------------------------------\n";
         cout << "[INFO] DONE." << endl;

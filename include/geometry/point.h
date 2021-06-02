@@ -17,6 +17,7 @@ namespace geometry
 
         friend double angle(const Point &point_a, const Point &point_b);
         friend double operator==(const Point &point_a, const Point &point_b);
+
         friend std::ostream &operator<<(std::ostream &os, const Point &point)
         {
             return os << "(" << point.x << ", " << point.y << ")";
