@@ -3,12 +3,12 @@
 
 # %%
 import json
-import colorsys
 from matplotlib import pyplot as plt
 
 # %%
-colors = ['#%02x%02x%02x' % tuple(map(lambda x: int(x * 255),
-                                      colorsys.hsv_to_rgb(i / 12.0, 0.5, 0.5))) for i in range(12)]
+# colors = ['#%02x%02x%02x' % tuple(map(lambda x: int(x * 255), colorsys.hsv_to_rgb(i / 12.0, 0.5, 0.5))) for i in range(12)]
+colors = ['#7f3f3f', '#7f5f3f', '#7f7f3f', '#5f7f3f', '#3f7f3f', '#3f7f5f',
+          '#3f7f7f', '#3f5f7f', '#3f3f7f', '#5f3f7f', '#7f3f7f', '#7f3f5f']
 
 # %%
 
