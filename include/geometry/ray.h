@@ -12,9 +12,6 @@ namespace geometry
     // A ray is a semi-infinite line which starts from `start_` and extends infinitely towards `end_`
     class Ray : public Line
     {
-    protected:
-        Point start_, end_;
-
     public:
         Ray(){};
         Ray(const Point &start, const Point &end);
@@ -22,6 +19,9 @@ namespace geometry
         virtual bool f2(const Point &point) const; // Checks if point lies on the ray.
 
         friend bool are_intersecting(const Ray &ray_a, const Ray &ray_b);
+
+    protected:
+        Point start_, end_;
     };
 }
 
