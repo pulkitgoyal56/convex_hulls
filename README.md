@@ -2,6 +2,20 @@
 
 > NOTE: This project follows the [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
 
+## Theory
+
+### Pseudocode
+
+``` psuedocode
+for every combination of convex hulls:
+    make a list of all apexes of either of the convex hull that lie inside the other;
+        There are three categories of these points.
+            1. Common apexes between the two convex hulls
+            2. Those that lie on the edge of the other convex hull
+            3. Those that lie properly inside the other convex hull
+    add to this list, the intersection points of all the combinations between their edges;
+```
+
 ## Directory Structure
 
 * `bin/` - Binaries
