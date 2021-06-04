@@ -8,6 +8,7 @@
 
 namespace geometry
 {
+    // A line_segment is a ray that ends at `end_`.
     class LineSegment : public Ray
     {
     public:

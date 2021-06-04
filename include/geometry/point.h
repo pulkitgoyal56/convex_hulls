@@ -15,7 +15,7 @@ namespace geometry
         Point(){};
         Point(double t_x, double t_y);
 
-        friend double angle(const Point &point_a, const Point &point_b);
+        friend double angle(const Point &point_a, const Point &point_b); // Returns the angle that a vector from point_b to point_a makes with the x-axis.
         friend double operator==(const Point &point_a, const Point &point_b);
 
         friend std::ostream &operator<<(std::ostream &os, const Point &point)

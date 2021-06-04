@@ -13,9 +13,6 @@ namespace geometry
     {
         this->order_ = this->apexes_.size();
 
-        if (this->order_ < 3)
-            throw "Polygon cannot be constructed; less than 3 apexes provided.";
-
         double center_x = std::accumulate(this->apexes_.begin(), this->apexes_.end(), 0,
                                           [](double sum, const Point &point)
                                           { return sum + point.x; });
@@ -65,6 +62,8 @@ namespace geometry
             return true;
 
         // Ray tracing algorithm to determine if a point lies inside a polygon.
+        // - Dray a ray from the point towards the center of the polygon.
+        // - If the ray crosses the polygon an odd number of times, the point lies inside the polygon.
         Ray ray(point, this->center_);
         bool crosses = false;
         for (int i = 0; i < this->order_; ++i)
@@ -76,12 +75,12 @@ namespace geometry
     {
         std::vector<Point> contained_points;
 
-        // Add apexes of polygon_a inside polygon_b
+        // Add apexes of polygon_a inside polygon_b.
         for (int k = 0; k < polygon_a.order_; ++k)
             if (bool inside = polygon_b.f2(polygon_a.apexes_.at(k)))
                 contained_points.push_back(polygon_a.apexes_.at(k));
 
-        // Add apexes of polygon_b inside polygon_a
+        // Add apexes of polygon_b inside polygon_a.
         for (int k = 0; k < polygon_b.order_; ++k)
             if (bool inside = polygon_a.f2(polygon_b.apexes_.at(k)))
                 contained_points.push_back(polygon_b.apexes_.at(k));
@@ -92,11 +91,11 @@ namespace geometry
             for (int j = 0; j < polygon_b.order_; ++j)
             {
                 LineSegment edge_b(polygon_b.apexes_.at(j), polygon_b.apexes_.at(j + 1));
+                // Add intersection points of intersecting edge combinations.
                 if (are_intersecting(edge_a, edge_b))
-                    // Add intersection points of intersecting edge combinations.
                     contained_points.push_back(intersection(edge_a, edge_b));
+                // Add common apexes between polygon_a and polygon_b.
                 if (polygon_a.apexes_.at(i) == polygon_b.apexes_.at(j))
-                    // Add common apexes.
                     contained_points.push_back(polygon_a.apexes_.at(i));
             }
         }

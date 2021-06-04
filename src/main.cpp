@@ -2,7 +2,6 @@
 // http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
 
 #include <iostream>
-
 #include <fstream>
 #include <set>
 

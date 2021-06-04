@@ -21,10 +21,10 @@ namespace geometry
         Polygon(){};
         Polygon(const std::vector<Point> &t_apexes, int t_id = -1);
 
-        bool is_in_bounds(const Point &point) const;
+        bool is_in_bounds(const Point &point) const; // Checks if point lies inside the bounds of the polygon.
         bool f2(const Point &point) const; // Checks if point lies inside the polygon.
 
-        friend double operator&(const Polygon &polygon_a, const Polygon &polygon_b); // from intersection (∩) in set theory
+        friend double operator&(const Polygon &polygon_a, const Polygon &polygon_b); // Returns the common area shared by two polygons.
 
     private:
         std::vector<Point> apexes_;

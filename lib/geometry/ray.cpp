@@ -11,14 +11,15 @@ namespace geometry
         this->b_ = (this->start_.x - this->end_.x);
         this->c_ = (this->start_.y * this->end_.x - this->start_.x * this->end_.y);
     }
-    bool Ray::f2(const Point &point) const // {0: "not_on/start" , 1: "on"}
+    bool Ray::f2(const Point &point) const // {0: "not_on" , 1: "on (including start point)"}
     {
         // if (this->f(point)) // If the point doesn't lie on the line,
         //     return false;   // it doesn't lie on the ray.
+        /// This above commented because, in the context of this problem, this function is used only for points already known to lie on the line.
 
-        if (((point.x - this->start_.x) * (this->end_.x - this->start_.x) > 0) &&
-            ((point.y - this->start_.y) * (this->end_.y - this->start_.y) > 0))
-            // If the point and the 'end' of the ray lie lie on the same side of the ray's starting point
+        // If the point and the 'end' of the ray lie on the same side of the ray's starting point,
+        if (((point.x - this->start_.x) * (this->end_.x - this->start_.x) >= 0))
+            // && ((point.y - this->start_.y) * (this->end_.y - this->start_.y) >= 0))
             return true; // the point lies on the ray.
         else
             return false;
@@ -28,29 +29,20 @@ namespace geometry
         if (are_parallel(ray_a, ray_b))
             return false;
 
+        // Find point of intersection of the corresponding lines of ray_a and ray_b.
         Point apparent_point_of_intersection = intersection(ray_b, ray_a);
+        // If the point of intersection lies on both the rays,
         if (ray_a.f2(apparent_point_of_intersection) && ray_b.f2(apparent_point_of_intersection))
-            return true;
+            return true; // they intersect.
         else
             return false;
 
         /// <ARCHIVED>
-        // if (are_parallel(ray_a, ray_b))
-        // // If the lines are parallel, and
-        // {
-        //     // (c1*b2 == c2*b1)
-        //     if ((ray_a.c_ * ray_b.b_ == ray_b.c_ * ray_a.b_) &&
-        //         // the lines are collinear, and
-        //         (ray_a.f2(ray_b.start_) || ray_a.f2(ray_b.end_) ||
-        //          ray_b.f2(ray_a.start_) || ray_b.f2(ray_a.end_)))
-        //         // if any of the two line segments contains at least one of the end points of the other line,
-        //         return true; // they intersect.
-        //     else
-        //         return false;
-        // }
-        // else if ((line_segment_a.f2(line_segment_b.start_) == line_segment_a.f2(line_segment_b.end_)) ||
-        //          (line_segment_b.f2(line_segment_a.start_) == line_segment_b.f2(line_segment_a.end_)))
-        //     // If both points of a line segment lie on the same side of the other line segment, or vice-versa,
+        // // - Alternative method that does not involve finding the intersection point to determine if two line_segments are intersecting.
+        // // - Not being used because it does not generalised; not applicable for when a ray is involved.
+        // // If both points of a line segment lie on the same side of the other line segment, or vice-versa,
+        // if ((line_segment_a.f(line_segment_b.start_) == line_segment_a.f(line_segment_b.end_)) ||
+        //     (line_segment_b.f(line_segment_a.start_) == line_segment_b.f(line_segment_a.end_)))
         //     return false; // they don't intersect.
         // else
         //     return true;
