@@ -18,13 +18,13 @@ for every combination of convex hulls:
 
 ## Directory Structure
 
-* `bin/` - Binaries
-* `build/` - Build files
-* `docs/` - Docs
-* `include/` - Header files
-* `lib/` - Implementations
-* `src/` - Application code
-* `tools/` - Complementary tools
+* [`bin/`](./bin) - Binaries
+* [`build/`](./build) - Build files
+* [`docs/`](./docs) - Docs
+* [`include/`](./include) - Header files
+* [`lib/`](./lib) - Implementations
+* [`src/`](./src) - Application code
+* [`tools/`](./tools) - Complementary tools
 * [`CMakeLists.txt`](./CMakeLists.txt)
 * [`convex_hulls.json`](./convex_hulls.json)
 * [`result_convex_hulls.json`](./result_convex_hulls.json)
