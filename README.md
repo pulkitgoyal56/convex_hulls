@@ -18,11 +18,11 @@ for every combination of convex hulls:
 
 ## Class Hierarchy
 
-* `struct Point`  
-* `class Line`  
-  * `class Ray: Line`  
-    * `class LineSegment: Ray`  
-* `class Polygon`  
+* [`struct Point`](./include/geometry/point.h)  
+* [`class Line`](./include/geometry/line.h)  
+  * [`class Ray: Line`](./include/geometry/ray.h)  
+    * [`class LineSegment: Ray`](./include/geometry/line_segment.h)  
+* [`class Polygon`](./include/geometry/polygon.h)  
 
 ## Directory Structure
 
