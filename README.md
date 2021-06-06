@@ -2,6 +2,14 @@
 
 > NOTE: This project follows the [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
 
+- [CONVEX HULLS](#convex-hulls)
+  - [Theory](#theory)
+    - [Pseudocode](#pseudocode)
+  - [Class Hierarchy](#class-hierarchy)
+  - [Directory Structure](#directory-structure)
+  - [Compiling and Running](#compiling-and-running)
+    - [Visualization (optional)](#visualization-optional)
+
 ## Theory
 
 ### Pseudocode
