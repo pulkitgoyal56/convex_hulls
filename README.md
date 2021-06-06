@@ -90,7 +90,7 @@ sudo apt install cmake
 
 ### Setup
 
-``` shÏ
+``` sh
 PG_PROJECT_ROOT="<path/to/the/project/root>"
 　## or
 cd <path/to/the/project/root>
