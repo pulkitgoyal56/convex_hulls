@@ -1,8 +1,9 @@
 // This code follows the C++ Core Guidelines.
 // http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
 
-#include <iostream>
 #include <fstream>
+#include <iomanip>
+#include <iostream>
 #include <set>
 
 #include "nlohmann/json.hpp"
