@@ -5,18 +5,25 @@
 ---
 
 1. [Theory](#theory)
-   1. [Pseudocode](#pseudocode)
+   1. [Pseudocode (High Level)](#pseudocode-high-level)
 2. [Class Hierarchy](#class-hierarchy)
 3. [Directory Structure](#directory-structure)
-4. [Compiling and Running](#compiling-and-running)
-   1. [Visualization (optional)](#visualization-optional)
+4. [Running](#running)
+   1. [Install Requirements (C++)](#install-requirements-c)
+   2. [Setup](#setup)
+   3. [Generate Build Files](#generate-build-files)
+   4. [Compile/Build](#compilebuild)
+   5. [Execute](#execute)
+   6. [Visualize (optional)](#visualize-optional)
+      1. [Install Requirements (Python)](#install-requirements-python)
+      2. [Run Script](#run-script)
 5. [Results](#results)
 
 ---
 
 ## Theory
 
-### Pseudocode
+### Pseudocode (High Level)
 
 ``` psuedocode
 for every combination of convex hulls:
@@ -55,36 +62,75 @@ for every combination of convex hulls:
 
 ---
 
-## Compiling and Running
+## Running
+
+> NOTE: Documentation relevant for Unix-like OS.  
+
+>> This program was developed on *MacOS Big Sur 11.2.3* using  
+>>> | `Apple clang version 12.0.0 (clang-1200.0.32.27)`  
+>>> | `cmake version 3.19.6`  
+
+>> Also tested on *Ubuntu 20.04.02 LTS on Windows 10 x86_64* using
+>>> | `g++ (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0`  
+>>> | `cmake version 3.16.3`  
+
+### Install Requirements (C++)
+
+> C++ compiler like `g++` or `clang`  
 
 ``` sh
+sudo apt install build-essential ## install gcc/g++
+```
+
+> *CMake* (*v3.10* or above)  
+
+``` sh
+sudo apt install cmake
+```
+
+### Setup
+
+``` shÏ
 PG_PROJECT_ROOT="<path/to/the/project/root>"
-# or
+　## or
 cd <path/to/the/project/root>
 PG_PROJECT_ROOT=$(pwd)
 ```
+
+### Generate Build Files
 
 ``` sh
 cmake -S $PG_PROJECT_ROOT -B $PG_PROJECT_ROOT/build
 ```
 
+### Compile/Build
+
 ``` sh
-make -C $PG_PROJECT_ROOT/build && $PG_PROJECT_ROOT/bin/Convex_Hulls $PG_PROJECT_ROOT/convex_hulls.json
+make -C $PG_PROJECT_ROOT/build
 ```
 
-### Visualization (optional)
+### Execute
+
+``` sh
+$PG_PROJECT_ROOT/bin/Convex_Hulls $PG_PROJECT_ROOT/convex_hulls.json
+```
+
+### Visualize (optional)
 
 Convex Hulls listed in a JSON file can be visualized using the [*visualize.py*](./tools/visualize.py) Python script in the [*tools/*](./tools) directory.  
 
-> Install requirements
->> *matplotlib*
+> NOTE: This script was developed in Python3.8 on MacOS
+
+#### Install Requirements (Python)
+
+> *matplotlib*
 
 ``` sh
 cd $PG_PROJECT_ROOT
 pip install -r ./tools/requirements.txt
 ```
 
-> Run script
+#### Run Script
 
 ``` sh
 cd $PG_PROJECT_ROOT
