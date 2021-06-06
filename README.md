@@ -2,13 +2,16 @@
 
 > NOTE: This project follows the [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
 
-- [CONVEX HULLS](#convex-hulls)
-  - [Theory](#theory)
-    - [Pseudocode](#pseudocode)
-  - [Class Hierarchy](#class-hierarchy)
-  - [Directory Structure](#directory-structure)
-  - [Compiling and Running](#compiling-and-running)
-    - [Visualization (optional)](#visualization-optional)
+---
+
+1. [Theory](#theory)
+   1. [Pseudocode](#pseudocode)
+2. [Class Hierarchy](#class-hierarchy)
+3. [Directory Structure](#directory-structure)
+4. [Compiling and Running](#compiling-and-running)
+   1. [Visualization (optional)](#visualization-optional)
+
+---
 
 ## Theory
 
@@ -24,6 +27,8 @@ for every combination of convex hulls:
     add to this list, the intersection points of all the combinations between their edges;
 ```
 
+---
+
 ## Class Hierarchy
 
 * [`struct Point`](./include/geometry/point.h)  
@@ -31,6 +36,8 @@ for every combination of convex hulls:
   * [`class Ray: Line`](./include/geometry/ray.h)  
     * [`class LineSegment: Ray`](./include/geometry/line_segment.h)  
 * [`class Polygon`](./include/geometry/polygon.h)  
+
+---
 
 ## Directory Structure
 
@@ -44,6 +51,8 @@ for every combination of convex hulls:
 * [`CMakeLists.txt`](./CMakeLists.txt)
 * [`convex_hulls.json`](./convex_hulls.json)
 * [`result_convex_hulls.json`](./result_convex_hulls.json)
+
+---
 
 ## Compiling and Running
 
