@@ -1,4 +1,4 @@
-# README
+# CONVEX HULLS
 
 > NOTE: This project follows the [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
 
