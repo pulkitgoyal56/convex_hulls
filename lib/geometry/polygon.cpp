@@ -3,6 +3,7 @@
 
 #include "geometry/polygon.h"
 
+#include <algorithm>
 #include <numeric>
 
 #include "geometry/line_segment.h"
