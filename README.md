@@ -10,6 +10,7 @@
 3. [Directory Structure](#directory-structure)
 4. [Compiling and Running](#compiling-and-running)
    1. [Visualization (optional)](#visualization-optional)
+5. [Results](#results)
 
 ---
 
@@ -41,16 +42,16 @@ for every combination of convex hulls:
 
 ## Directory Structure
 
-* [`bin/`](./bin) - Binaries
-* [`build/`](./build) - Build files
-* [`docs/`](./docs) - Docs
-* [`include/`](./include) - Header files
-* [`lib/`](./lib) - Implementations
-* [`src/`](./src) - Application code
-* [`tools/`](./tools) - Complementary tools
+* [`bin/`](./bin) -- Binaries
+* [`build/`](./build) -- Build files
+* [`docs/`](./docs) -- Docs
+* [`include/`](./include) -- Header files
+* [`lib/`](./lib) -- Implementations
+* [`src/`](./src) -- Application code
+* [`tools/`](./tools) -- Complementary tools
 * [`CMakeLists.txt`](./CMakeLists.txt)
-* [`convex_hulls.json`](./convex_hulls.json)
-* [`result_convex_hulls.json`](./result_convex_hulls.json)
+* [`convex_hulls.json`](./convex_hulls.json) -- Input file
+* [`result_convex_hulls.json`](./result_convex_hulls.json) -- Output file
 
 ---
 
@@ -89,3 +90,12 @@ pip install -r ./tools/requirements.txt
 cd $PG_PROJECT_ROOT
 python ./tools/visualize.py
 ```
+
+---
+
+## Results
+
+> Input - [`convex_hulls.json`](./convex_hulls.json).  
+![*Input Convex Hulls*](./tools/visualize_convex_hulls.png)
+> Output - [`result_convex_hulls.json`](./result_convex_hulls.json).  
+![*Output Convex Hulls*](./tools/visualize_result_convex_hulls.png)
