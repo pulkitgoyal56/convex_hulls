@@ -16,6 +16,14 @@ for every combination of convex hulls:
     add to this list, the intersection points of all the combinations between their edges;
 ```
 
+## Class Hierarchy
+
+* `struct Point`  
+* `class Line`  
+  * `class Ray: Line`  
+    * `class LineSegment: Ray`  
+* `class Polygon`  
+
 ## Directory Structure
 
 * [`bin/`](./bin) - Binaries
