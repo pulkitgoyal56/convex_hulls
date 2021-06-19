@@ -1,5 +1,11 @@
+---
+author: Pulkit Goyal
+date: Jun 19, 2021
+---
+
 # CONVEX HULLS
 
+> Problem Statement - [./docs/MaaS_General-Challenge_Directions.pdf](./docs/MaaS_General-Challenge_Directions.pdf)  
 > NOTE: This project follows the [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
 
 ---
